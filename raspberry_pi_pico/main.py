@@ -20,7 +20,7 @@ def openlid():
     servo.duty_u16(2800)
     
 def closelid():
-    servo.duty_u16(1450)
+    servo.duty_u16(1420)
 
 def ultra1():
    trig1.low()
@@ -54,7 +54,7 @@ closelid()
 
 while True:
     d1 = ultra1()
-    print('d1:', d1)
+    #print(d1)
     if d1 < 10:
         if not is_opened:
             is_opened = True
@@ -81,13 +81,13 @@ while True:
             closelid()
             time.sleep(0.5)
         d2 = ultra2()
-        print('d2:', d2)
+        print(d2)
         time.sleep(0.5)
-        if 5 < d2 < 7:
+        if d2 < 8:
             r.off()
             y.off()
             g.on()
-        elif 3.5 < d2 <= 5:
+        elif d2 < 10 :
             r.off()
             y.on()
             g.off()
